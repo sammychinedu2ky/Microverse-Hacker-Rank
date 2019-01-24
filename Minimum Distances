@@ -1,0 +1,55 @@
+function significant(a) {
+    let arrange = [...a].sort()
+    let hold = [];
+    let check = 0;
+    for (let i = 0; i < a.length; i++) {
+        if (hold.length === 0) {
+            hold.push(arrange[i]);
+            check = a[i];
+        }
+        if (arrange[i] == check) continue;
+        else {
+            hold.push(arrange[i])
+            check = arrange[i]
+        }
+
+
+    }
+    return hold
+}
+
+
+
+
+function minimumDistances(b) {
+    let test = significant(b); //1,3,4,7
+    // console.log(test)
+    let holder = [];
+    let seeker = []
+    for (let i = 0; i < test.length; i++) {
+        let inhold = test[i];
+        let arr = []
+
+        for (let j = b.indexOf(inhold); j < b.length; j++) {
+            if (seeker.includes(inhold)) break;
+            if (b.indexOf(inhold, j) === -1) break;
+            arr.push(b.indexOf(inhold, j))
+            // console.log(b.indexOf(inhold,j),b)
+        }
+        if (arr.length == 1 | arr.length === 0) {
+            arr = []
+        }
+        else {
+            holder.push(arr)
+            seeker.push(inhold)
+        }
+    }
+    let reduce = holder.map(each => {
+        let [a, b] = each;
+        return b - a
+    })
+
+    if (holder.length == 0) return -1
+    return Math.min(...reduce);
+}
+
