@@ -5,3 +5,4 @@ function beautifulDays(i, j, k) {
     return arr.map(each => {
         return (each - each.split("").reverse().join("")) / k % 1 === 0 ? 1 : 0}).reduce((a, b) => a + b)
 }
+// Power of git
