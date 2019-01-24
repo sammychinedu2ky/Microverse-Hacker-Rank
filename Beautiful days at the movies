@@ -1,0 +1,7 @@
+function beautifulDays(i, j, k) {
+    let arr = [];
+    //creates the range and converts the integers to string to make use of the split, reverse and join function
+    for (let start = i; start <= j; start++) arr.push(start.toString());
+    return arr.map(each => {
+        return (each - each.split("").reverse().join("")) / k % 1 === 0 ? 1 : 0}).reduce((a, b) => a + b)
+}
