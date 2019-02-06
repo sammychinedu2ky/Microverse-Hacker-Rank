@@ -2,6 +2,8 @@ function minimumDistance(a){
   let arr = [];
   for(let i = 0; i<a.length; i++){
     if(a[i] && a.indexOf(a[i],i+1)>0){
+    /*this pushes the index of an element and its twin starting 
+    from the one with a higher index to the firsr index found*/
       arr.push([a.indexOf(a[i],i+1),i])
     }
   }
